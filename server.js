@@ -1,6 +1,6 @@
 const express = require("express");
-const setupApiRoutes = require("./routes/apiRoutes");
-const setupHtmlRoutes = require("./routes/htmlRoutes");
+const setupApiRoutes = require("./routes/apiroutes");
+const setupHtmlRoutes = require("./routes/htmlroutes");
 // This sets up the basic properties for our express server and tells node that
 // we are creating an "express" server
 const app = express();
