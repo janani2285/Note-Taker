@@ -16,7 +16,7 @@ app.use(express.json());
 // The code below points the server to a series of "route" files. These routes
 // give our server a "map" of how to respond when users visit or request data
 // from various URLs.
-setupApiRoutes(app);
+//setupApiRoutes(app);
 setupHtmlRoutes(app);
 
 // The below code effectively "starts" our server
