@@ -41,13 +41,9 @@ module.exports = function (app) {
 
             //check if file exisits.
             const fileJSON = JSON.parse(data);
-            if (fileJSON != null || fileJSON != "undefined" || fileJSON != "") {
-                reqJson.id = fileJSON.length + 1;
-            } else {
-                reqJson.id = 1;
-
-            }
+            reqJson.id = Date.now();            
             fileJSON.push(reqJson);
+
             fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(fileJSON), (err, data) => {
                 if (err) throw err;
                 res.json(reqJson);
