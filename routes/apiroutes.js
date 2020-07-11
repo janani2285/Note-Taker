@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = function (app) {
 
     app.get("/api/notes", (req, res) => {
-        res.json(noteData);
+       return res.json(noteData);
     });
 
     app.delete("/api/notes/:id", (req, res) => {
@@ -46,7 +46,7 @@ module.exports = function (app) {
 
             fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(fileJSON), (err, data) => {
                 if (err) throw err;
-                res.json(reqJson);
+                return res.json(reqJson);
             });
         });
 
