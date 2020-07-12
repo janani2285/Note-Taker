@@ -4,6 +4,7 @@ const path = require("path");
 
 module.exports = function (app) {
 
+    //GET api call
     app.get("/api/notes", (req, res) => {
         fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
             if (err) throw err;
@@ -11,6 +12,8 @@ module.exports = function (app) {
         });
     });
 
+
+    //DELETE note with the given id
     app.delete("/api/notes/:id", (req, res) => {
 
         fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
@@ -32,7 +35,7 @@ module.exports = function (app) {
     });
 
 
-
+    //POST call to save notes
     app.post("/api/notes", (req, res) => {
 
         fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
