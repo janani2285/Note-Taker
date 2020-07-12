@@ -5,7 +5,10 @@ const path = require("path");
 module.exports = function (app) {
 
     app.get("/api/notes", (req, res) => {
-       return res.json(noteData);
+        fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+            if (err) throw err;
+            return res.json(JSON.parse(data));
+        });
     });
 
     app.delete("/api/notes/:id", (req, res) => {
@@ -22,8 +25,6 @@ module.exports = function (app) {
                         if (err) throw err;
                     });
                     return res.send("Note Deleted");
-                } else {
-                    return res.send(`Cannot delete notes - Record with id: ${id} not found.`);
                 }
             }
 
@@ -41,7 +42,7 @@ module.exports = function (app) {
 
             //check if file exisits.
             const fileJSON = JSON.parse(data);
-            reqJson.id = Date.now();            
+            reqJson.id = Date.now();
             fileJSON.push(reqJson);
 
             fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(fileJSON), (err, data) => {
